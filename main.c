@@ -32,8 +32,6 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -88,22 +86,20 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   GPIO_InitTypeDef gpioInit = {0};
-  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOG_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOE_CLK_ENABLE();
+  HAL_PWREx_EnableVddIO2();
 
-  /* GPIOD config */
-  gpioInit.Pin   = GPIO_PIN_12 | GPIO_PIN_13;
+  /* GPIOG config */
+  gpioInit.Pin   = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_9;
   gpioInit.Mode  = GPIO_MODE_OUTPUT_PP;
   gpioInit.Speed = GPIO_SPEED_FREQ_LOW;
   gpioInit.Pull  = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOD, &gpioInit);
+  HAL_GPIO_Init(GPIOG, &gpioInit);
 
   /* GPIOB config */
-  gpioInit.Pin   = GPIO_PIN_8;
-  gpioInit.Mode  = GPIO_MODE_OUTPUT_PP;
-  gpioInit.Speed = GPIO_SPEED_FREQ_LOW;
-  gpioInit.Pull  = GPIO_NOPULL;
+  gpioInit.Pin   = GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5;
   HAL_GPIO_Init(GPIOB, &gpioInit);
 
   /* GPIOE config */
